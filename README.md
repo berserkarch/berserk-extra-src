@@ -1,4 +1,4 @@
-![Berserkarch-Extra-SRC](https://placehold.co/800x200/282a36/f8f8f2?text=Berserkarch-Extra-SRC)
+![Berserkarch Extra SRC](https://placehold.co/800x200/282a36/f8f8f2?text=Berserkarch+Extra+SRC)
 
 ## Installation
 
