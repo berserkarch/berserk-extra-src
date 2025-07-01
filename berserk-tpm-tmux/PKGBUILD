@@ -2,11 +2,10 @@
 
 pkgname=berserk-tpm-tmux
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="tpm - Tmux Plugin Manager for Berserk Arch Specific"
 arch=('any')
-_repo=tpm
-url="https://github.com/tmux-plugins/$_repo"
+url="https://gitlab.com/berserkarch/berserk-packages/berserk-extra-src/-/tree/main/berserk-tpm-tmux"
 license=('MIT')
 makedepends=('git')
 depends=('tmux>=1.9' 'bash')
