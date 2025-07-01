@@ -1,0 +1,68 @@
+# ===================================================================
+# Comprehensive .gitignore for Arch Linux Packaging Repositories
+# ===================================================================
+
+# --- Arch Linux / makepkg specific ---
+# Ignore the final built package files. The wildcard handles different
+# compression formats (.zst, .xz, etc.).
+*.pkg.tar.*
+
+# Ignore the temporary "package" directory where makepkg assembles the files.
+# The trailing slash ensures we only ignore directories named 'pkg'.
+pkg/
+
+# Ignore the temporary "source" directory where makepkg extracts sources.
+src/
+
+
+# --- General Development & Build Artifacts ---
+# Ignore compiled object files, libraries, and executables
+*.o
+*.so
+*.a
+*.exe
+
+# Ignore log files
+*.log
+log/
+logs/
+
+
+# --- Common Editor & IDE Directories/Files ---
+# VS Code
+.vscode/
+
+# Vim
+*.swp
+*.swo
+*~
+
+# JetBrains IDEs (IntelliJ, PyCharm, etc.)
+.idea/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Atom
+.atom/
+
+
+# --- Operating System Specific Files ---
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+
+# --- Python ---
+# Ignore virtual environments and cache files
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
