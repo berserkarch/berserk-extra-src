@@ -1,0 +1,19 @@
+# Maintainer: Gaurav Raj (@thehackersbrain) <me@thehackersbrain.xyz>
+
+pkgname=berserk-tpm-tmux
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="tpm - Tmux Plugin Manager for Berserk Arch Specific"
+arch=('any')
+_repo=tpm
+url="https://github.com/tmux-plugins/$_repo"
+license=('MIT')
+makedepends=('git')
+depends=('tmux>=1.9' 'bash')
+install=$pkgname.install
+source=()
+sha256sums=()
+
+package() {
+    echo "  -> Installing tpm..."
+}
