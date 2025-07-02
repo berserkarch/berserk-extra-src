@@ -2,7 +2,8 @@ username="$(ls /home | head -n1 | tr -d '\n')"
 
 post_install() {
   echo -e "Installing in /home/${username} for now..."
-  git clone https://github.com/tmux-plugins/tpm /home/${username}/.tmux/plugins/tpm
+  mkdir -p /home/${username}/.tmux/plugins/tpm/
+  cp -r /usr/share/tmux-plugin-manager/* /home/${username}/.tmux/plugins/tpm/
   chown -R ${username}:${username} /home/${username}/.tmux
 }
 
