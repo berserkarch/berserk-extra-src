@@ -1,6 +1,11 @@
 username="$(ls /home | head -n1 | tr -d '\n')"
 
 post_install() {
+  if [[ -z "$username" || "$username" == "liveuser" ]]; then
+    echo "Skipping post-install: user is empty or liveuser."
+    return
+  fi
+
   echo -e "Installing in /home/${username} for now..."
   mkdir -p /home/${username}/.tmux/plugins/tpm/
   cp -r /usr/share/tmux-plugin-manager/* /home/${username}/.tmux/plugins/tpm/
