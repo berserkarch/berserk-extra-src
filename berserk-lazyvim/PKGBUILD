@@ -1,0 +1,22 @@
+# Maintainer: Gaurav Raj (@thehackersbrain) <me@thehackersbrain.xyz>
+
+pkgname=berserk-lazyvim
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="LazyVim for Berserk Arch Specific"
+arch=('any')
+url="https://gitlab.com/berserkarch/berserk-packages/berserk-extra-src/-/tree/main/berserk-tpm-tmux"
+srcurl="https://github.com/LazyVim/starter"
+license=('MIT')
+makedepends=('git')
+depends=('neovim' 'fzf' 'ripgrep' 'fd')
+install=$pkgname.install
+source=("git+$srcurl.git")
+sha256sum=('SKIP')
+
+package() {
+  echo "  -> Installing LazyVim in the global /etc/xdg/nvim..."
+  install -dDm 755 "$pkgdir/etc/xdg/nvim/"
+  cp -r starter/* "$pkgdir/etc/xdg/nvim"
+}
+sha256sums=('SKIP')

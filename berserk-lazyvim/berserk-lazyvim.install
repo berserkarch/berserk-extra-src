@@ -1,0 +1,17 @@
+username="$(ls /home | head -n1 | tr -d '\n')"
+
+post_install() {
+  if [[ -z "$username" || "$username" == "liveuser" ]]; then
+    echo "Skipping post-install: user is empty or liveuser."
+    return
+  fi
+
+  echo -e "Installing in /home/${username} for now..."
+  mkdir -p /home/${username}/.config/
+  cp -r /etc/xdg/nvim /home/${username}/.config/
+  chown -R ${username}:${username} /home/${username}/.config/nvim
+}
+
+post_upgrade() {
+  post_install
+}
