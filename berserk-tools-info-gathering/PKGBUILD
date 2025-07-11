@@ -1,0 +1,30 @@
+# Maintainer: Gaurav Raj (@thehackersbrain) <me@thehackersbrain.xyz>
+
+pkgname=berserk-tools-info-gathering
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="Berserk Arch Security Toolkit - Info-Gathering"
+arch=('any')
+url="https://wiki.berserkarch.xyz/tools/berserk-tools-info-gathering"
+license=('GPL')
+depends=(
+    dnsrecon
+    enum4linux
+    hping
+    masscan
+    recon-ng
+    amass
+    theharvester
+    nbtscan
+)
+provides=("${pkgname}")
+groups=('berserk-pentest')
+options=('emptydirs')
+install=
+source=()
+md5sums=()
+
+package() {
+    # Meta-package: No files to install
+    :
+}
