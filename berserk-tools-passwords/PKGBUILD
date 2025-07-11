@@ -1,0 +1,29 @@
+# Maintainer: Gaurav Raj (@thehackersbrain) <me@thehackersbrain.xyz>
+
+pkgname=berserk-tools-passwords
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="Berserk Arch Security Toolkit - Passwords"
+arch=('any')
+url="https://wiki.berserkarch.xyz/tools/berserk-tools-passwords"
+license=('GPL')
+depends=(
+    cewl
+    crunch
+    hashcat
+    john
+    hydra
+    medusa
+    seclists
+)
+provides=("${pkgname}")
+groups=('berserk-pentest')
+options=('emptydirs')
+install=
+source=()
+md5sums=()
+
+package() {
+    # Meta-package: No files to install
+    :
+}
