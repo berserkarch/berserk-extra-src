@@ -1,0 +1,24 @@
+# Maintainer: Gaurav Raj (@thehackersbrain) <me@thehackersbrain.xyz>
+
+pkgname=berserk-tools-fuzzing
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="Berserk Arch Security Toolkit - Fuzzing"
+arch=('any')
+url="https://wiki.berserkarch.xyz/tools/berserk-tools-fuzzing"
+license=('GPL')
+depends=(
+    ffuf
+    wfuzz
+)
+provides=("${pkgname}")
+groups=('berserk-pentest')
+options=('emptydirs')
+install=
+source=()
+md5sums=()
+
+package() {
+    # Meta-package: No files to install
+    :
+}
