@@ -1,15 +1,23 @@
 # Maintainer: Gaurav Raj (@thehackersbrain) <me@thehackersbrain.xyz>
 
-pkgname=berserk-tools-fuzzing
+pkgname=berserk-tools-web
 pkgver=0.1.0
 pkgrel=1
-pkgdesc="Berserk Arch Security Toolkit - Fuzzing"
+pkgdesc="Berserk Arch Security Toolkit - Web"
 arch=('any')
-url="https://wiki.berserkarch.xyz/tools/berserk-tools-fuzzing"
+url="https://wiki.berserkarch.xyz/tools/berserk-tools-web"
 license=('GPL')
 depends=(
-    ffuf
-    wfuzz
+    dirb
+    dirbuster
+    hakrawler
+    nikto
+    whatweb
+    wpscan
+    sqlitebrowser
+    zaproxy
+    burpsuite
+    caido-desktop
 )
 provides=("${pkgname}")
 groups=('berserk-pentest')
