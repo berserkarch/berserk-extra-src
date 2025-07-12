@@ -1,0 +1,23 @@
+# Maintainer: Gaurav Raj (@thehackersbrain) <me@thehackersbrain.xyz>
+
+pkgname=berserk-apparmor
+pkgver=0.1.0
+pkgrel=2
+pkgdesc="Berserk Arch Security Toolkit - Apparmor"
+arch=('any')
+url="https://wiki.berserkarch.xyz/tools/berserk-tools-apparmor"
+license=('GPL')
+depends=(
+  apparmor
+  audit
+)
+provides=("${pkgname}")
+groups=('berserk-core')
+options=('emptydirs')
+install=$pkgname.install
+source=()
+md5sums=()
+
+package() {
+  :
+}
