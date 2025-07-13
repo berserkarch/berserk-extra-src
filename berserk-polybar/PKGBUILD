@@ -16,4 +16,5 @@ package() {
   cp -r "${startdir}/polybar/" "${pkgdir}/etc/skel/.config/"
   install -Dm755 "${startdir}/polybar/launch.sh" "${pkgdir}/usr/local/bin/polybar-launch"
   chmod 755 "${pkgdir}/etc/skel/.config/polybar/launch.sh"
+  install -Dm644 "${startdir}/polybar/polybar.desktop" "${pkgdir}/etc/xdg/autostart/polybar.desktop"
 }
