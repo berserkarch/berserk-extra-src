@@ -1,0 +1,19 @@
+# Maintainer: Gaurav Raj (@thehackersbrain) <me@thehackersbrain.xyz>
+
+pkgname=berserk-polybar
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="Polybar config for Berserk Arch Specific"
+arch=('any')
+url="https://gitlab.com/berserkarch/berserk-packages/berserk-extra-src/-/tree/main/berserk-polybar"
+license=('MIT')
+depends=('polybar')
+source=()
+sha256sum=()
+
+package() {
+  install -dDm 755 "${pkgdir}/etc/skel/.config/polybar/"
+  cp -r "${startdir}/polybar/" "${pkgdir}/etc/skel/.config/"
+  install -Dm755 "${startdir}/polybar/launch.sh" "${pkgdir}/usr/local/bin/polybar-launch"
+  chmod 755 "${pkgdir}/etc/skel/.config/polybar/launch.sh"
+}
