@@ -1,0 +1,19 @@
+# Maintainer: Gaurav Raj (@thehackersbrain) <me@thehackersbrain.xyz>
+
+pkgname=berserk-neofetch
+pkgver=0.1.0
+pkgrel=0
+pkgdesc="Neofetch for BerserkArch"
+arch=('any')
+url="https://github.com/berserkarch/berserkarch-extra"
+license=('GPL3')
+conflicts=('neofetch')
+options=(!strip !emptydirs)
+
+source=('neofetch')
+
+sha256sums=('8c41f05629d236d06e173ab56d7a6c38efccca61890354fb38f9abae625566ab')
+
+package() {
+  install -Dm 755 neofetch "$pkgdir"/usr/bin/neofetch
+}
