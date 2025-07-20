@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd /usr/share/burp-pro/
+
+/usr/bin/java -jar burploader.jar

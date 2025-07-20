@@ -1,0 +1,30 @@
+Color_Off='\033[0m'
+
+# Regular Colors
+Black='\033[0;30m' Red='\033[0;31m' Green='\033[0;32m' Yellow='\033[0;33m'
+Blue='\033[0;34m' Purple='\033[0;35m' Cyan='\033[0;36m' White='\033[0;37m'
+
+VERSION='2025.7'
+FILENAME="burpsuite_pro_v${VERSION}.jar"
+
+place_app() {
+  cd '/usr/share/burp-pro/'
+
+  if [[ -f "${FILENAME}" ]]; then
+    rm -rf "${FILENAME}"
+  fi
+
+  curl -OJ "https://portswigger-cdn.net/burp/releases/download?product=pro&type=Jar&version=${VERSION}"
+  zip -d "${FILENAME}" 'chromium-macosx*.zip' 'chromium-win*.zip'
+  cd -
+
+  echo -e ${Blue}"\n[*] Finished downloading ${Purple}${FILENAME}${Blue}..."${Color_Off}
+}
+
+post_install() {
+  place_app
+}
+
+post_upgrade() {
+  post_install
+}

@@ -1,0 +1,36 @@
+# Maintainer: Gaurav Raj (@thehackersbrain) <me@thehackersbrain.xyz>
+
+pkgname=berserk-burp-pro
+_pkgname=burp-pro
+pkgver=0.1.0
+_pkgver=2025.7
+pkgrel=1
+pkgdesc='An integrated platform for performing security testing of web applications (professional edition)'
+url='https://portswigger.net/burp/'
+depends=('java-runtime>=21.0.0' 'hicolor-icon-theme' 'curl')
+makedepends=('zip')
+arch=('any')
+license=('GPLv3')
+source=("${_pkgname}" "${_pkgname}.desktop" 'burploader.jar')
+install="$_pkgname.install"
+
+
+sha256sums=('4c21a0fc2e557519b4955229d0d56963a233bd8676c44ad614a35a0c498d6833'
+            '6f56db2839d2e701c64e868fca11cc486eb4dbfc40c96601bd3b015918908b73'
+            '970d5dd16cd51202d38e65c2fa258a17f431061421d09078bf35bddb8a38ea66')
+
+prepare() {
+  sed -i "s/VERSION=.*/VERSION='${_pkgver}'/" "$startdir/$_pkgname.install"
+}
+
+package() {
+  install -Dm644 "${srcdir}/burploader.jar" "${pkgdir}/usr/share/${_pkgname}/burploader.jar"
+  install -Dm644 "${srcdir}/${_pkgname}.desktop" -t "${pkgdir}/usr/share/applications/"
+  install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+
+  # install icons
+  for size in 16 24 32 48 128 256 512; do
+    install -Dm644 "${startdir}/icons/icon${size}.png" "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/burpsuite-pro.png"
+  done
+  install -Dm644 "${startdir}/icons/icon.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/burpsuite-pro.svg"
+}
