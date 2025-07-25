@@ -1,0 +1,17 @@
+# Maintainer: Gaurav Raj (@thehackersbrain) <me@thehackersbrain.xyz>
+
+pkgname=updrive
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="Upload files to google drive"
+arch=('any')
+url="https://gitlab.com/berserkarch/berserk-packages/berserk-extra-src/-/tree/main/updrive"
+license=('MIT')
+depends=('python-google-api-python-client' 'python-google-auth' 'python-google-auth-oauthlib' 'python-google-auth-httplib2')
+source=('updrive')
+sha256sum=('SKIP')
+
+package() {
+  install -Dm755 "${srcdir}/updrive" "${pkgdir}/usr/bin/updrive"
+}
+sha256sums=('32b0ad7bd70e0cff7cc227a281e6d4c71d2aea12dc4cd21ff9da38c89dfaa0fa')
