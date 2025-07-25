@@ -1,0 +1,207 @@
+#!/usr/bin/env python3
+
+
+import os
+import re
+import subprocess
+import shutil
+from rich import print
+import argparse
+from sys import exit
+
+
+def parse_args():
+    parser = argparse.ArgumentParser(
+        description="Utility to build Arch Linux Packages!"
+    )
+    parser.add_argument(
+        "local_path",
+        type=str,
+        nargs="?",
+        help="Directory containing the packages source.",
+    )
+    parser.add_argument(
+        "-l",
+        "--list-packages",
+        action="store_true",
+        help="List the packages to be built.",
+    )
+
+    args, _ = parser.parse_known_args()
+
+    if not args.local_path:
+        parser.print_usage()
+        exit(1)
+    return args
+
+
+def build_package_list(local_path) -> list[str]:
+    print("\n[yellow]--- Searching for packages to build ---[/]")
+
+    try:
+        packages = [os.path.join(local_path, i) for i in os.listdir(local_path)]
+    except FileNotFoundError:
+        print(f"Error: [bold red]Could not list items in {local_path}[/]")
+        return []
+
+    package_dirs = [
+        i
+        for i in packages
+        if os.path.isdir(i)
+        and not i.endswith(".git")
+        and not i.endswith("out")
+        and os.path.exists(os.path.join(i, ".CLEANUP"))
+    ]
+
+    if not package_dirs:
+        print("[bold red]No package directories found.[/]")
+        return []
+
+    print(f"[cyan]Found {len(package_dirs)} potential package directories.[/]")
+
+    return package_dirs
+
+
+def increment_pkgrel(pkgbuild_path):
+    try:
+        with open(pkgbuild_path, "r") as f:
+            lines = f.readlines()
+
+        new_lines = []
+        updated = False
+        pkgrel_pattern = re.compile(r"^\s*pkgrel=(\d+)")
+
+        for line in lines:
+            match = pkgrel_pattern.match(line)
+            if match and not updated:
+                current_pkgrel = int(match.group(1))
+                new_pkgrel = current_pkgrel + 1
+                new_line = f"pkgrel={new_pkgrel}\n"
+                new_lines.append(new_line)
+                print(
+                    f"  - In {os.path.basename(os.path.dirname(pkgbuild_path))}: Found pkgrel={current_pkgrel}. Incremented to {new_pkgrel}."
+                )
+                updated = True
+            else:
+                new_lines.append(line)
+
+        if updated:
+            with open(pkgbuild_path, "w") as f:
+                f.writelines(new_lines)
+            return True
+        else:
+            print(
+                f"  - Warning: Could not find pkgrel in {pkgbuild_path}. Skipping increment."
+            )
+            return False
+
+    except FileNotFoundError:
+        print(f"  - Error: PKGBUILD not found at {pkgbuild_path}")
+        return False
+    except Exception as e:
+        print(f"  - An error occurred while processing {pkgbuild_path}: {e}")
+        return False
+
+
+def build_package(package_dir, outpath):
+    print(f"  - Attempting to build package in {package_dir}...")
+    if not os.path.exists(os.path.join(package_dir, "PKGBUILD")):
+        print(f"  - Error: No PKGBUILD found in {package_dir}. Cannot build.")
+        return
+
+    try:
+        original_cwd = os.getcwd()
+        os.chdir(package_dir)
+
+        print("  - Cleaning up any leftover packages already present...")
+        cleanup = subprocess.run(
+            ["rm -rf *.zst*"],
+            check=True,
+            text=True,
+            capture_output=True,
+            shell=True,
+        )
+        print("  - Cleanup stdout:\n", cleanup.stdout)
+
+        if os.path.exists(os.path.join(package_dir, ".CLEANUP")):
+            with open(os.path.join(package_dir, ".CLEANUP")) as fh:
+                dirs = [i.strip() for i in fh]
+
+            srccleanup = subprocess.run(
+                ["rm", "-rf", *dirs],
+                check=True,
+                text=True,
+                capture_output=True,
+            )
+            print("  - SRC Cleanup stdout:\n", srccleanup.stdout)
+
+        if not os.path.exists(os.path.join(package_dir, ".SRCINFO")):
+            print("  - Updating source files hashes...")
+            updatesrc = subprocess.run(
+                ["updpkgsums"],
+                text=True,
+                capture_output=True,
+            )
+            print("  - UpdatedSRC stdout:\n", updatesrc.stdout)
+
+        print("  - Starting packages build...")
+        process = subprocess.run(
+            ["makepkg", "--sign", "-f"],
+            check=True,
+            text=True,
+            capture_output=True,
+        )
+
+        print(f"  - Successfully built and installed package from {package_dir}.")
+        print("  - Makepkg stdout:\n", process.stdout)
+
+        print("Moving packages file into output directory...")
+        for i in os.listdir():
+            if i.endswith(".zst") or i.endswith(".zst.sig"):
+                shutil.move(i, os.path.join(outpath, i))
+
+    except FileNotFoundError:
+        print(
+            "  - Error: 'makepkg' command not found. Please ensure you are running this on an Arch-based system and that base-devel is installed."
+        )
+    except subprocess.CalledProcessError as e:
+        print(f"  - Error building package in {package_dir}.")
+        print(f"  - Return code: {e.returncode}")
+        print(f"  - Makepkg stdout:\n{e.stdout}")
+        print(f"  - Makepkg stderr:\n{e.stderr}")
+    finally:
+        os.chdir(original_cwd)
+
+
+def main():
+    args = parse_args()
+    local_path = os.path.abspath(args.local_path)
+    os.makedirs(out_path := os.path.join(local_path, "out"), exist_ok=True)
+
+    print(
+        "[bold green underline]--- Starting BerserkArch Package Build Script ---[/]\n"
+    )
+
+    base_pkg_dir = sorted(build_package_list(local_path))
+
+    if args.list_packages:
+        print(base_pkg_dir)
+        exit()
+
+    for package_dir in base_pkg_dir:
+        pkgbuild_file = os.path.join(package_dir, "PKGBUILD")
+        package_name = os.path.basename(package_dir)
+
+        print(f"\nProcessing package: [italic yellow]{package_name}[/]")
+
+        if os.path.exists(pkgbuild_file):
+            if increment_pkgrel(pkgbuild_file):
+                build_package(package_dir, out_path)
+        else:
+            print(f"  - No PKGBUILD found for {package_name}. Skipping.")
+
+    print("\n[bold green underline]--- Build process finished ---[/]")
+
+
+if __name__ == "__main__":
+    main()
