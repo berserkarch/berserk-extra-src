@@ -2,7 +2,7 @@
 
 pkgname=berserk-tpm-tmux
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 _git_tag=v3.1.0
 pkgdesc="tpm - Tmux Plugin Manager for Berserk Arch Specific"
 arch=('any')
@@ -14,7 +14,7 @@ depends=('tmux>=1.9' 'bash')
 install=$pkgname.install
 source=("git+$srcurl.git#tag=$_git_tag" "tmux.conf")
 sha256sums=('8eb7d0f0477d4e5046778931fdae3d3b2ad74c3bc7cea114e228560a3200672a'
-  '2ac7a6ab531661ea72f7ff0ce4ae22ebdc4e11fca61eb2912a8b78e8890a7e31')
+            '2ac7a6ab531661ea72f7ff0ce4ae22ebdc4e11fca61eb2912a8b78e8890a7e31')
 
 package() {
   echo "  -> Installing tpm..."

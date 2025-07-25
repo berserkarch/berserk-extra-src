@@ -2,7 +2,7 @@
 
 pkgname=berserk-neofetch
 pkgver=0.1.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Neofetch for BerserkArch"
 arch=('any')
 url="https://github.com/berserkarch/berserkarch-extra"

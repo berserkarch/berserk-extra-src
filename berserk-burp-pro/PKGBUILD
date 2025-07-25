@@ -4,7 +4,7 @@ pkgname=berserk-burp-pro
 _pkgname=burp-pro
 pkgver=0.1.0
 _pkgver=2025.7
-pkgrel=1
+pkgrel=2
 pkgdesc='An integrated platform for performing security testing of web applications (professional edition)'
 url='https://portswigger.net/burp/'
 depends=('java-runtime>=21.0.0' 'hicolor-icon-theme' 'curl')
