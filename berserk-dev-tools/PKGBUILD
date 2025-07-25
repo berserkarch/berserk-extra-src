@@ -7,13 +7,11 @@ pkgdesc="Dev tools for Berserk Arch"
 arch=('any')
 url="https://gitlab.com/berserkarch/berserk-packages/berserk-extra-src/-/tree/main/berserk-dev-tools"
 license=('MIT')
-depends=('python-google-api-python-client' 'python-google-auth' 'python-google-auth-oauthlib' 'python-google-auth-httplib2' 'python-rich')
-source=('updrive' 'buildpkg')
+depends=('python-google-api-python-client' 'python-google-auth' 'python-google-auth-oauthlib' 'python-google-auth-httplib2' 'python-rich' 'updrive')
+source=('buildpkg')
 
-sha256sums=('32b0ad7bd70e0cff7cc227a281e6d4c71d2aea12dc4cd21ff9da38c89dfaa0fa'
-            'a3aee4bbf46a0235ad1dd28f350e14bce79eaee7e0546f79ecd4c9d46ebf6974')
+sha256sums=('a3aee4bbf46a0235ad1dd28f350e14bce79eaee7e0546f79ecd4c9d46ebf6974')
 
 package() {
-  install -Dm755 "${srcdir}/updrive" "${pkgdir}/usr/bin/updrive"
   install -Dm755 "${srcdir}/buildpkg" "${pkgdir}/usr/bin/buildpkg"
 }
