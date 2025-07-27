@@ -1,0 +1,21 @@
+# Maintainer: Gaurav Raj (@thehackersbrain) <me@thehackersbrain.xyz>
+
+pkgname=berserk-gtk-theme
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="Default GTK themes for Berserk Arch"
+arch=('any')
+url="https://github.com/thehackersbrain/berserk-gtk-theme"
+license=('GPL3')
+depends=()
+
+source=()
+sha256sums=()
+
+install="$pkgname.install"
+berserkconfig="usr/share/berserkarch"
+
+package() {
+  install -d "${pkgdir}/${berserkconfig}/"
+  cp -r "${startdir}/themes/" "${pkgdir}/${berserkconfig}/"
+}
