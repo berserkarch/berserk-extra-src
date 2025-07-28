@@ -2,19 +2,20 @@
 
 pkgname=berserk-config-gnome
 pkgver=0.1.0
-pkgrel=6
+pkgrel=7
 pkgdesc="GNOME configurations for Berserk Arch"
 arch=('any')
 license=('GPL')
 depends=('gnome-shell' 'dconf' 'glib2')
 install=$pkgname.install
-source=()
-sha256sums=()
+source=('berserk-environment')
+sha256sums=('SKIP')
 
 targetdir="usr/share/glib-2.0/schemas"
 
 package() {
   mkdir -p "${pkgdir}/${targetdir}/"
+  install -Dm644 "${srcdir}/berserk-environment" "${pkgdir}/etc/berserk-environment"
   # install -Dm755 "${startdir}/files/99_berserkarch-gnome.gschema.override" "${pkgdir}/usr/share/glib-2.0/schemas/99_berserkarch-gnome.gschema.override"
   install -Dm644 "${startdir}/files/berserkarch.xml" "${pkgdir}/usr/share/gnome-background-properties/berserkarch.xml"
   install -Dm755 "${startdir}/files/10_gnome-shell.gschema.override" "${pkgdir}/${targetdir}/10_gnome-shell.gschema.override"

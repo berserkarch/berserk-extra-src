@@ -1,9 +1,14 @@
+update_env() {
+  mv /etc/berserk-environment /etc/environment
+}
+
 post_install() {
-  # mv /usr/share/glib-2.0/schemas/files/* /usr/share/glib-2.0/schemas/
-  #
+  update_env
+
   glib-compile-schemas /usr/share/glib-2.0/schemas || true
   dconf update || true
 }
+
 post_upgrade() {
   post_install
 }
