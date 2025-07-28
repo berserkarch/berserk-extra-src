@@ -14,6 +14,7 @@ icon-theme = 'Flat-Remix-Blue-Dark'
 font-name = 'Cantarell 11'
 document-font-name = 'Cantarell 11'
 monospace-font-name = 'Fira Code Medium 10'
+cursor-theme='Sunity-cursors'
 
 [org.gnome.desktop.screensaver]
 picture-options = 'zoom'
