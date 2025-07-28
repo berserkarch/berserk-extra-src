@@ -2,7 +2,7 @@
 
 pkgname=berserk-polybar
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Polybar config for Berserk Arch Specific"
 arch=('any')
 url="https://gitlab.com/berserkarch/berserk-packages/berserk-extra-src/-/tree/main/berserk-polybar"
