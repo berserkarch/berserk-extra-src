@@ -1,5 +1,5 @@
 update_env() {
-  mv /etc/berserk-environment /etc/environment
+  mv /etc/berserk-environment-gnome /etc/environment
 }
 
 post_install() {
