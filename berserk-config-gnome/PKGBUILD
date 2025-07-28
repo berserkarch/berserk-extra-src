@@ -2,21 +2,21 @@
 
 pkgname=berserk-config-gnome
 pkgver=0.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="GNOME configurations for Berserk Arch"
 arch=('any')
 license=('GPL')
 depends=('gnome-shell' 'dconf' 'glib2')
 install=$pkgname.install
-source=('berserkarch.xml')
-sha256sums=('SKIP')
+source=()
+sha256sums=()
 
 targetdir="usr/share/glib-2.0/schemas"
 
 package() {
   mkdir -p "${pkgdir}/${targetdir}/"
-  # install -Dm755 "${srcdir}/99_berserkarch-gnome.gschema.override" "${pkgdir}/usr/share/glib-2.0/schemas/99_berserkarch-gnome.gschema.override"
-  install -Dm644 "${srcdir}/berserkarch.xml" "${pkgdir}/usr/share/gnome-background-properties/berserkarch.xml"
+  # install -Dm755 "${startdir}/files/99_berserkarch-gnome.gschema.override" "${pkgdir}/usr/share/glib-2.0/schemas/99_berserkarch-gnome.gschema.override"
+  install -Dm644 "${startdir}/files/berserkarch.xml" "${pkgdir}/usr/share/gnome-background-properties/berserkarch.xml"
   install -Dm755 "${startdir}/files/10_gnome-shell.gschema.override" "${pkgdir}/${targetdir}/10_gnome-shell.gschema.override"
   install -Dm755 "${startdir}/files/10_gnome-terminal.gschema.override" "${pkgdir}/${targetdir}/10_gnome-terminal.gschema.override"
   install -Dm755 "${startdir}/files/10_desktop-base.gschema.override" "${pkgdir}/${targetdir}/10_desktop-base.gschema.override"
@@ -25,5 +25,4 @@ package() {
   install -Dm755 "${startdir}/files/10_gnome-tweaks.gschema.override" "${pkgdir}/${targetdir}/10_gnome-tweaks.gschema.override"
   install -Dm755 "${startdir}/files/10_gsettings-desktop-schemas.gschema.override" "${pkgdir}/${targetdir}/10_gsettings-desktop-schemas.gschema.override"
   install -Dm755 "${startdir}/files/21_kali-themes.gschema.override" "${pkgdir}/${targetdir}/21_kali-themes.gschema.override"
-  # cp -r "${startdir}/files/" "${pkgdir}/${targetdir}/"
 }

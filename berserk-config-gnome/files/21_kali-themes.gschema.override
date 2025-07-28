@@ -14,7 +14,7 @@ icon-theme = 'Flat-Remix-Blue-Dark'
 font-name = 'Cantarell 11'
 document-font-name = 'Cantarell 11'
 monospace-font-name = 'Fira Code Medium 10'
-cursor-theme='Sunity-cursors'
+cursor-theme="Sunity-cursors"
 
 [org.gnome.desktop.screensaver]
 picture-options = 'zoom'
@@ -55,7 +55,7 @@ swap-color = '#19a187'
 [org.gnome.shell]
 disable-extension-version-validation = true
 enabled-extensions = ['apps-menu@gnome-shell-extensions.gcampax.github.com', 'dash-to-dock@micxgx.gmail.com', 'ProxySwitcher@flannaghan.com', 'ding@rastersoft.com', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'ubuntu-appindicators@ubuntu.com', 'tiling-assistant@leleat-on-github', 'system-monitor@gnome-shell-extensions.gcampax.github.com', 'drive-menu@gnome-shell-extensions.gcampax.github.com', 'places-menu@gnome-shell-extensions.gcampax.github.com', 'top-panel-vpnip@kali.org']
-favorite-apps = ['org.gnome.Terminal.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.TextEditor.desktop', 'firefox-esr.desktop', 'kali-msfconsole.desktop', 'org.wireshark.Wireshark.desktop', 'kali-burpsuite.desktop', 'cherrytree.desktop']
+favorite-apps=['firefox.desktop', 'org.gnome.Nautilus.desktop', 'kitty.desktop', 'code.desktop', 'terminator.desktop']
 
 [org.gnome.shell.extensions.dash-to-dock]
 custom-theme-shrink=false
