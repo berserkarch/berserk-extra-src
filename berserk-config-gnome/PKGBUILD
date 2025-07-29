@@ -2,14 +2,14 @@
 
 pkgname=berserk-config-gnome
 pkgver=0.1.0
-pkgrel=8
+pkgrel=9
 pkgdesc="GNOME configurations for Berserk Arch"
 arch=('any')
 license=('GPL')
 depends=('gnome-shell' 'dconf' 'glib2')
 install=$pkgname.install
 source=('berserk-environment-gnome')
-sha256sums=('SKIP')
+sha256sums=('5c3c4d5d2bf2c82a08aa7c7a1fd45a6d912cb15e010143bd63f6f9001aaebc49')
 
 targetdir="usr/share/glib-2.0/schemas"
 
