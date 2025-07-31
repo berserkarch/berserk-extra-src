@@ -1,13 +1,14 @@
 # Changelog
 
 **Repository:** [berserk-extra-src](git@gitlab.com:berserkarch/berserk-packages/berserk-extra-src.git)
-**Generated:** 2025-07-26 04:27:35
+**Generated:** 2025-07-31 05:45:12
 **Path:** `/home/musashi/projects/berserkarch/berserk-packages/berserk-extra-src`
 
 ## July 2025
 
 ### 🚀 Major Changes
 
+- **Added new themes package** ([42268e7](git@gitlab.com:berserkarch/berserk-packages/berserk-extra-src/-/commit/42268e76fde5c7985078e02edf984e88a9eb1ebb)) - *Gaurav Raj* `2025-07-28 00:21` *(173 files, +123526/-0)*
 - **Added neofetch package** ([83fb693](git@gitlab.com:berserkarch/berserk-packages/berserk-extra-src/-/commit/83fb6931794f4d14d072ed26be61d6b10a353313)) - *Gaurav Raj* `2025-07-20 04:46` *(2 files, +11690/-0)*
 - **Added new package src** ([b21e971](git@gitlab.com:berserkarch/berserk-packages/berserk-extra-src/-/commit/b21e971796d5c494987860ac1a92ddb1fb9bae7f)) - *Gaurav Raj* `2025-07-03 14:02` *(21 files, +0/-1037)*
 - **Added new package src** ([49d3de6](git@gitlab.com:berserkarch/berserk-packages/berserk-extra-src/-/commit/49d3de6e2384345b9657929dc14a022a3f6246cb)) - *Gaurav Raj* `2025-07-03 14:00` *(23 files, +1076/-0)*
@@ -16,6 +17,11 @@
 
 ### ✨ Features
 
+- **Added berserk-gnome meta package** ([c7c81b2](git@gitlab.com:berserkarch/berserk-packages/berserk-extra-src/-/commit/c7c81b2e9ee37981a4c15049fab56bda5f710d69)) - *Gaurav Raj* `2025-07-28 22:46` *(2 files, +0/-34)*
+- **Added berserk-gnome meta package** ([f8b0acd](git@gitlab.com:berserkarch/berserk-packages/berserk-extra-src/-/commit/f8b0acd5ae909eaeddd7cb76bc3c7582ef2932a9)) - *Gaurav Raj* `2025-07-28 22:41` *(2 files, +34/-0)*
+- **Added env here** ([0732246](git@gitlab.com:berserkarch/berserk-packages/berserk-extra-src/-/commit/0732246f3722b00292e915c98a4739c0cf05d1b5)) - *Gaurav Raj* `2025-07-28 08:13` *(3 files, +18/-5)*
+- **Added gnome config package** ([7035827](git@gitlab.com:berserkarch/berserk-packages/berserk-extra-src/-/commit/70358270962cb90e43cc1fb8102dd3f6cd9fd388)) - *Gaurav Raj* `2025-07-28 02:21` *(5 files, +70/-0)*
+- **Added updated changelogs** ([7bb12a7](git@gitlab.com:berserkarch/berserk-packages/berserk-extra-src/-/commit/7bb12a7bb8f01daeec84de80c87c5368ee862110)) - *Gaurav Raj* `2025-07-26 04:32` *(1 files, +6/-1)*
 - **Added dev tools** ([31f9359](git@gitlab.com:berserkarch/berserk-packages/berserk-extra-src/-/commit/31f935917a584b7764f06dc139592dcde50c3ad0)) - *Gaurav Raj* `2025-07-26 04:11` *(2 files, +3/-111)*
 - **Added dev tools** ([f72d540](git@gitlab.com:berserkarch/berserk-packages/berserk-extra-src/-/commit/f72d540c31390f283cd23f13e4fca3d5a10f957a)) - *Gaurav Raj* `2025-07-26 04:07` *(4 files, +334/-0)*
 - **Added updrive package** ([fb3c18b](git@gitlab.com:berserkarch/berserk-packages/berserk-extra-src/-/commit/fb3c18b188be784b8a17de803ac72cbebf80d130)) - *Gaurav Raj* `2025-07-26 01:38` *(3 files, +125/-0)*
@@ -40,6 +46,9 @@
 
 ### 🐛 Bug Fixes
 
+- **Fixed file conflicts** ([ab9e51a](git@gitlab.com:berserkarch/berserk-packages/berserk-extra-src/-/commit/ab9e51a30ea67a5596e1b3cc892c964abd009445)) - *Gaurav Raj* `2025-07-29 00:12` *(3 files, +4/-4)*
+- **Fixed path issue -- for fucking 3rd time** ([95c04ee](git@gitlab.com:berserkarch/berserk-packages/berserk-extra-src/-/commit/95c04eea7a1798b424a11c7c033ca5ec14c04a8d)) - *Gaurav Raj* `2025-07-28 01:11` *(2 files, +2/-2)*
+- **Fixed path issue** ([6814aa3](git@gitlab.com:berserkarch/berserk-packages/berserk-extra-src/-/commit/6814aa31566b7b2d89d22cb43e236ce7421ab437)) - *Gaurav Raj* `2025-07-28 00:49` *(2 files, +2/-2)*
 - **Fixed a path issue** ([c00e02d](git@gitlab.com:berserkarch/berserk-packages/berserk-extra-src/-/commit/c00e02df797b24ebb3b43958343f03cf5b51ca22)) - *Gaurav Raj* `2025-07-11 16:53` *(1 files, +5/-3)*
 - **Fixed the tmux file conflicts** ([5581331](git@gitlab.com:berserkarch/berserk-packages/berserk-extra-src/-/commit/5581331f04eee7c682beb659999826e7ab3169f1)) - *Gaurav Raj* `2025-07-02 16:04` *(2 files, +91/-4)*
 
@@ -50,8 +59,16 @@
 - **Updated README.md file** ([52c7385](git@gitlab.com:berserkarch/berserk-packages/berserk-extra-src/-/commit/52c7385304ad9d3dac10c24dc0159e0621f8b251)) - *Gaurav Raj* `2025-07-02 02:03` *(1 files, +1/-1)*
 - **Updated README.md file** ([9cef54c](git@gitlab.com:berserkarch/berserk-packages/berserk-extra-src/-/commit/9cef54cfd031f3e65221bfce1af6b69729418596)) - *Gaurav Raj* `2025-07-02 02:01` *(1 files, +23/-84)*
 
+### 📦 Dependencies
+
+- **Updated env path** ([2b29ee4](git@gitlab.com:berserkarch/berserk-packages/berserk-extra-src/-/commit/2b29ee44dad24a49da8daf98c97501598b5bea1f)) - *Gaurav Raj* `2025-07-29 06:35` *(2 files, +3/-3)*
+- **Updated gnome configs - x5** ([d6f2215](git@gitlab.com:berserkarch/berserk-packages/berserk-extra-src/-/commit/d6f2215ae3aad0b18bbf53b06f22a0a060719757)) - *Gaurav Raj* `2025-07-28 07:14` *(4 files, +7/-8)*
+- **Updated gnome configs - x4** ([2d5a9d6](git@gitlab.com:berserkarch/berserk-packages/berserk-extra-src/-/commit/2d5a9d627743956ed6a1cb04be697cdd12c82de7)) - *Gaurav Raj* `2025-07-28 06:22` *(4 files, +4/-8)*
+- **Updated gnome configs - x3** ([78aeef7](git@gitlab.com:berserkarch/berserk-packages/berserk-extra-src/-/commit/78aeef767788146fde2eeacd032815106ed2632a)) - *Gaurav Raj* `2025-07-28 06:13` *(10 files, +188/-8)*
+
 ### 🔧 Other Changes
 
+- **Modified autostart** ([ad678c6](git@gitlab.com:berserkarch/berserk-packages/berserk-extra-src/-/commit/ad678c6730265468a111cac982f43bd6daa2e2b9)) - *Gaurav Raj* `2025-07-28 07:04` *(2 files, +2/-1)*
 - **Created separate polybar config** ([d0bb049](git@gitlab.com:berserkarch/berserk-packages/berserk-extra-src/-/commit/d0bb049420f084d79f1cea66433a0259090af921)) - *Gaurav Raj* `2025-07-13 23:48` *(2 files, +6/-0)*
 - **Created separate polybar config** ([07927b0](git@gitlab.com:berserkarch/berserk-packages/berserk-extra-src/-/commit/07927b093ca517708ca67e24bca49cba24fe194e)) - *Gaurav Raj* `2025-07-13 23:43` *(3 files, +240/-0)*
 - **WIP on main: acb06d9 added first group build** ([08ef23c](git@gitlab.com:berserkarch/berserk-packages/berserk-extra-src/-/commit/08ef23cc91287893b198020004c0ac6ca90963a5)) - *Gaurav Raj* `2025-07-11 16:21` *(1 files, +2/-0)*
