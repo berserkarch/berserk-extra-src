@@ -1,0 +1,16 @@
+# Maintainer: Gaurav Raj (@thehackersbrain) <me@thehackersbrain.xyz>
+
+pkgname=berserk-wallpapers
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="Default wallpapers for Berserk Arch"
+arch=('any')
+url="https://gitlab.com/berserkarch/berserk-packages/berserk-core-src/berserk-wallpapers"
+license=('GPL3')
+options=(!strip !emptydirs)
+
+
+package() {
+    install -dm755 "$pkgdir/usr/share/backgrounds/"
+	cp -r "${startdir}/berserkarch/" "$pkgdir/usr/share/backgrounds/"
+}
