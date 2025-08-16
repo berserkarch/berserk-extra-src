@@ -1,13 +1,13 @@
 [Desktop Entry]
 Type=X-GNOME-Metatheme
-Name=Kali-Dark
-Comment=The Kali Default Theme
+Name=BerserkDark
+Comment=The Berserk Arch Default Theme
 Encoding=UTF-8
 
 
 [X-GNOME-Metatheme]
-GtkTheme=Kali-Dark
-MetacityTheme=Kali-Dark
+GtkTheme=BerserkDark
+MetacityTheme=BerserkDark
 IconTheme=Flat-Remix-Blue-Dark
-CursorTheme=Adwaita
+CursorTheme="Sunity-Cursors"
 ButtonLayout=:minimize,maximize,close

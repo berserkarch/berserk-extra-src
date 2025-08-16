@@ -3,7 +3,7 @@
 
 pkgname=berserk-gtk-theme
 pkgver=0.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Default gtk theme for BerserkArch Based on and derieved from Kali Linux"
 arch=('any')
 url="https://gitlab.com/berserkarch/berserk-packages/berserk-core-src/"
@@ -13,7 +13,7 @@ makedepends=('gtk3' 'sassc' 'meson' 'ninja' 'git')
 source=("$pkgname::git+https://gitlab.com/kalilinux/packages/adw-gtk3-kali.git" "git+https://gitlab.com/kalilinux/packages/kali-themes" "index.theme")
 sha256sums=('SKIP'
             'SKIP'
-            'ca3563417ee50703b10602db4341445b0815735b27cfd11820744bffae91a14b')
+            'ac93ea5ef781847cb403b084c9212422ce823e835ac1e64a971295c7d23203c8')
 
 prepare() {
   cd "$srcdir/$pkgname"
@@ -36,4 +36,3 @@ package() {
   cp -r "${startdir}/BerserkDark/" "$pkgdir/usr/share/themes/"
   rm -rf "${startdir}/BerserkDark/"
 }
-
