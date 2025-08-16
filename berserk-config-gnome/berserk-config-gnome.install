@@ -1,10 +1,4 @@
-update_env() {
-  cp /etc/berserk-environment-gnome /etc/environment
-}
-
 post_install() {
-  update_env
-
   glib-compile-schemas /usr/share/glib-2.0/schemas || true
   dconf update || true
 }
