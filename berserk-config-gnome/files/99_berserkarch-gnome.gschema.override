@@ -6,8 +6,8 @@ disable-user-extensions=false
 [org.gnome.desktop.background]
 color-shading-type='solid'
 picture-options='zoom'
-picture-uri='file:///usr/share/backgrounds/xfce/berserkarch.png'
-picture-uri-dark='file:///usr/share/backgrounds/xfce/berserkarch.png'
+picture-uri='file:///usr/share/backgrounds/berserkarch/berserkarch.png'
+picture-uri-dark='file:///usr/share/backgrounds/berserkarch/berserkarch.png'
 primary-color='#241f31'
 secondary-color='#000000'
 
@@ -15,7 +15,7 @@ secondary-color='#000000'
 accent-color='blue'
 color-scheme='prefer-dark'
 cursor-theme="Sunity-cursors"
-gtk-theme='adw-gtk3-blue-dark'
+gtk-theme='BerserkDark'
 icon-theme='Flat-Remix-Blue-Dark'
 
 [org.gnome.desktop.screensaver]

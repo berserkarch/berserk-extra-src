@@ -3,8 +3,8 @@
 <wallpapers>
   <wallpaper deleted="false">
     <name>berserkarch</name>
-    <filename>/usr/share/backgrounds/xfce/berserkarch.png</filename>
-    <filename-dark>/usr/share/backgrounds/xfce/berserkarch.png</filename-dark>
+    <filename>/usr/share/backgrounds/berserkarch/berserkarch.png</filename>
+    <filename-dark>/usr/share/backgrounds/berserkarch/berserkarch.png</filename-dark>
     <options>zoom</options>
     <shade_type>solid</shade_type>
     <pcolor>#46226e</pcolor>

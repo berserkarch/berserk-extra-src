@@ -1,7 +1,7 @@
 [org.gnome.desktop.background]
 picture-options='zoom'
-picture-uri='file:///usr/share/backgrounds/xfce/berserkarch.png'
+picture-uri='file:///usr/share/backgrounds/berserkarch/berserkarch.png'
 
 [org.gnome.desktop.screensaver]
 picture-options='zoom'
-picture-uri='file:///usr/share/backgrounds/xfce/berserkarch.png'
+picture-uri='file:///usr/share/backgrounds/berserkarch/berserkarch.png'

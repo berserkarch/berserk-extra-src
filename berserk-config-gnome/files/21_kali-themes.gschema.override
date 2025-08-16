@@ -4,12 +4,12 @@ palette = ['#1F2229', '#D41919', '#5EBDAB', '#FEA44C', '#367bf0', '#9755b3', '#4
 
 [org.gnome.desktop.background]
 picture-options = 'zoom'
-picture-uri = 'file:///usr/share/backgrounds/xfce/berserkarch.png'
-picture-uri-dark = 'file:///usr/share/backgrounds/xfce/berserkarch.png'
+picture-uri = 'file:///usr/share/backgrounds/berserkarch/berserkarch.png'
+picture-uri-dark = 'file:///usr/share/backgrounds/berserkarch/berserkarch.png'
 
 [org.gnome.desktop.interface]
 color-scheme = 'prefer-dark'
-gtk-theme = 'adw-gtk3-dark'
+gtk-theme = 'BerserkDark'
 icon-theme = 'Flat-Remix-Blue-Dark'
 font-name = 'Cantarell 11'
 document-font-name = 'Cantarell 11'
@@ -78,7 +78,7 @@ enable-tiling-popup = false
 enable-raise-tile-group = false
 
 [org.gnome.shell.extensions.user-theme]
-name = 'Kali-Dark'
+name = 'BerserkDark'
 
 [org.gnome.Terminal.Legacy.Profile]
 background-transparency-percent = 5
@@ -109,7 +109,7 @@ key-label-font='Cantarell'
 # Configuration for xfce's text-editor
 [org.xfce.mousepad.preferences.view]
 auto-indent = true
-color-scheme = 'Kali-Dark'
+color-scheme = 'BerserkDark'
 highlight-current-line = true
 match-braces = true
 show-line-numbers = true

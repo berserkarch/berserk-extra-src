@@ -2,7 +2,7 @@
 
 pkgname=berserk-config-gnome
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME configurations for Berserk Arch"
 arch=('any')
 license=('GPL')
