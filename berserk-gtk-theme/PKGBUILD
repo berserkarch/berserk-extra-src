@@ -1,21 +1,39 @@
+# shellcheck disable=SC2034,SC2154,SC2317
 # Maintainer: Gaurav Raj (@thehackersbrain) <me@thehackersbrain.xyz>
 
 pkgname=berserk-gtk-theme
 pkgver=0.1.0
-pkgrel=3
-pkgdesc="Default GTK themes for Berserk Arch"
+pkgrel=4
+pkgdesc="Default gtk theme for BerserkArch Based on and derieved from Kali Linux"
 arch=('any')
-url="https://github.com/thehackersbrain/berserk-gtk-theme"
-license=('GPL3')
-depends=()
+url="https://gitlab.com/berserkarch/berserk-packages/berserk-core-src/"
+license=('GPLv3')
+depends=('git')
+makedepends=('gtk3' 'sassc' 'meson' 'ninja' 'git')
+source=("$pkgname::git+https://gitlab.com/kalilinux/packages/adw-gtk3-kali.git" "git+https://gitlab.com/kalilinux/packages/kali-themes" "index.theme")
+sha256sums=('SKIP'
+            'SKIP'
+            'ca3563417ee50703b10602db4341445b0815735b27cfd11820744bffae91a14b')
 
-source=()
-sha256sums=()
+prepare() {
+  cd "$srcdir/$pkgname"
+  meson setup build
+  ninja -C build
+  DESTDIR="$startdir/_pkg" ninja -C build install
+}
 
-install="$pkgname.install"
-berserkconfig="usr/share/berserkarch"
+build() {
+  mkdir -p "$startdir/BerserkDark"
+  cp -r "$srcdir/kali-themes/share/themes/Kali-Dark/." "$startdir/BerserkDark/"
+  rm -rf "$startdir/BerserkDark/Kali-Dark" "$startdir/BerserkDark/index.theme"
+  cp -r "$startdir/_pkg/usr/share/themes/adw-gtk3-dark/gtk-3.0" "$startdir/BerserkDark/"
+  cp -r "$startdir/_pkg/usr/share/themes/adw-gtk3-dark/gtk-4.0" "$startdir/BerserkDark/"
+  install -Dm755 "$srcdir/index.theme" "$startdir/BerserkDark/"
+}
 
 package() {
-  install -d "${pkgdir}/${berserkconfig}/"
-  cp -r "${startdir}/themes/" "${pkgdir}/${berserkconfig}/"
+  install -dm755 "$pkgdir/usr/share/themes/"
+  cp -r "${startdir}/BerserkDark/" "$pkgdir/usr/share/themes/"
+  rm -rf "${startdir}/BerserkDark/"
 }
+

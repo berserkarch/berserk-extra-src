@@ -1,1 +1,46 @@
-*.conf
+# === Arch packaging ===
+# Generated metadata
+.SRCINFO
+
+# Built packages
+*.pkg.tar.zst
+*.pkg.tar.zst.sig
+
+# Logs and temp build stuff
+*.log
+*.log.*
+*.tar
+*.tar.*
+*.zip
+*.rar
+
+# Makepkg work directories
+pkg/
+src/
+src-*/
+pkg-*/
+
+# Build system outputs
+/build/
+/builddir/
+/CMakeFiles/
+/meson-logs/
+/meson-private/
+/ninja_log
+/build.ninja
+/compile_commands.json
+
+# IDE/editor clutter
+*~
+*.swp
+*.swo
+*.bak
+*.tmp
+.DS_Store
+.idea/
+.vscode/
+
+# Specific build files
+berserk-gtk-theme/
+kali-themes/
+_pkg/
