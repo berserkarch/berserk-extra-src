@@ -2,7 +2,7 @@
 
 pkgname=berserk-dev-tools
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Dev tools for Berserk Arch"
 arch=('any')
 url="https://gitlab.com/berserkarch/berserk-packages/berserk-extra-src/-/tree/main/berserk-dev-tools"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python-google-api-python-client' 'python-google-auth' 'python-google-auth-oauthlib' 'python-google-auth-httplib2' 'python-rich' 'updrive')
 source=('buildpkg')
 
-sha256sums=('a3aee4bbf46a0235ad1dd28f350e14bce79eaee7e0546f79ecd4c9d46ebf6974')
+sha256sums=('07e7d0aca0016a6e6e97b71fa4e875a31f83581c62d7f7b55ddd307b7ebf517c')
 
 package() {
   install -Dm755 "${srcdir}/buildpkg" "${pkgdir}/usr/bin/buildpkg"

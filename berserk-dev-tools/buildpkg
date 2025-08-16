@@ -146,7 +146,7 @@ def build_package(package_dir, outpath):
 
         print("  - Starting packages build...")
         process = subprocess.run(
-            ["makepkg", "--sign", "-f"],
+            ["makepkg", "--sign", "--nodeps", "-f"],
             check=True,
             text=True,
             capture_output=True,
