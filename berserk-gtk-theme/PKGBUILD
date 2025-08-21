@@ -3,17 +3,18 @@
 
 pkgname=berserk-gtk-theme
 pkgver=0.1.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Default gtk theme for BerserkArch Based on and derieved from Kali Linux"
 arch=('any')
 url="https://gitlab.com/berserkarch/berserk-packages/berserk-core-src/"
 license=('GPLv3')
 depends=('git')
 makedepends=('gtk3' 'sassc' 'meson' 'ninja' 'git')
-source=("$pkgname::git+https://gitlab.com/kalilinux/packages/adw-gtk3-kali.git" "git+https://gitlab.com/kalilinux/packages/kali-themes" "index.theme")
+source=("$pkgname::git+https://gitlab.com/kalilinux/packages/adw-gtk3-kali.git" "git+https://gitlab.com/kalilinux/packages/kali-themes" "index.theme" 'Makefile')
 sha256sums=('SKIP'
             'SKIP'
-            'ac93ea5ef781847cb403b084c9212422ce823e835ac1e64a971295c7d23203c8')
+            'ac93ea5ef781847cb403b084c9212422ce823e835ac1e64a971295c7d23203c8'
+            '0ad037e0a1a8743a64e6f136915257e2e4affe8fc5ca651a348e9f4cb0caafa0')
 
 prepare() {
   cd "$srcdir/$pkgname"
@@ -23,16 +24,17 @@ prepare() {
 }
 
 build() {
-  mkdir -p "$startdir/BerserkDark"
-  cp -r "$srcdir/kali-themes/share/themes/Kali-Dark/." "$startdir/BerserkDark/"
-  rm -rf "$startdir/BerserkDark/Kali-Dark" "$startdir/BerserkDark/index.theme"
-  cp -r "$startdir/_pkg/usr/share/themes/adw-gtk3-dark/gtk-3.0" "$startdir/BerserkDark/"
-  cp -r "$startdir/_pkg/usr/share/themes/adw-gtk3-dark/gtk-4.0" "$startdir/BerserkDark/"
-  install -Dm755 "$srcdir/index.theme" "$startdir/BerserkDark/"
+  mkdir -p "$startdir/themes/BerserkDark"
+  cp -r "$srcdir/kali-themes/share/themes/Kali-Dark/." "$startdir/themes/BerserkDark/"
+  rm -rf "$startdir/BerserkDark/Kali-Dark" "$startdir/themes/BerserkDark/index.theme"
+  cp -r "$startdir/_pkg/usr/share/themes/adw-gtk3-dark/gtk-3.0" "$startdir/themes/BerserkDark/"
+  cp -r "$startdir/_pkg/usr/share/themes/adw-gtk3-dark/gtk-4.0" "$startdir/themes/BerserkDark/"
+  install -Dm755 "$srcdir/index.theme" "$startdir/themes/BerserkDark/"
 }
 
 package() {
-  install -dm755 "$pkgdir/usr/share/themes/"
-  cp -r "${startdir}/BerserkDark/" "$pkgdir/usr/share/themes/"
-  rm -rf "${startdir}/BerserkDark/"
+  install -dm755 "$pkgdir/usr/share/"
+  make
+  cp -r "${startdir}/themes/" "$pkgdir/usr/share/"
+  rm -rf "${startdir}/themes/"
 }
