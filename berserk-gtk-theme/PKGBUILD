@@ -3,7 +3,7 @@
 
 pkgname=berserk-gtk-theme
 pkgver=0.1.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Default gtk theme for BerserkArch Based on and derieved from Kali Linux"
 arch=('any')
 url="https://gitlab.com/berserkarch/berserk-packages/berserk-core-src/"
@@ -35,7 +35,6 @@ build() {
 package() {
   install -dm755 "$pkgdir/usr/share/"
   make
-  rm -rf "${startdir}/themes/BerserkDark"
   cp -r "${startdir}/themes/" "$pkgdir/usr/share/"
   rm -rf "${startdir}/themes/"
 }
