@@ -1,4 +1,3 @@
-# ===== Settings =====
 OUTDIR       ?= ../themes
 BASE_THEME   ?= ../themes/BerserkDark
 THEME_PREFIX ?= BerserkDark
@@ -30,7 +29,12 @@ $(VARIANTS):
 	    > "$$variant_dir/gtk-$$ver.0/gtk.css"; \
 	  printf '@import "../../$(BASE_THEME)/gtk-%s.0/gtk.css";\n@define-color accent_bg_color $(COLOR_$@);' "$$ver" \
 	    > "$$variant_dir/gtk-$$ver.0/gtk-dark.css"; \
-	done
+	done; \
+	sed -i \
+	  -e "s/^Name=.*/Name=$(THEME_PREFIX)-$@/" \
+	  -e "s/^GtkTheme=.*/GtkTheme=$(THEME_PREFIX)-$@/" \
+	  -e "s/^MetacityTheme=.*/MetacityTheme=$(THEME_PREFIX)-$@/" \
+	  "$$variant_dir/index.theme"
 	@echo ">> Done: $(OUTDIR)/$(THEME_PREFIX)-$@"
 
 clean:
