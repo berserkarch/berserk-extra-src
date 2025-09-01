@@ -25,7 +25,7 @@ conky.config = {
     default_outline_color = '#BEC8CB',
     alignment = 'top_left',
     gap_x = 20,
-    gap_y = 8,
+    gap_y = 5,
     no_buffers = true,
     cpu_avg_samples = 1,
     net_avg_samples = 1,
@@ -33,17 +33,15 @@ conky.config = {
     uppercase = true,
     minimum_width = 450,
     minimum_height = 120,
+    lua_load='/usr/share/berserkarch/conky/scripts/netmon.lua',
 };
 
 conky.text = [[
 #leet chars: ┤┤└ └ ┴ ┴ ┐┐│ │┘ ┘┌ ┌ ├ ├ ┬ ┬ ┼ ┼ ┴ ┴ ── ││ ▽▼△▲▵▴▾▿
 
-network ───┬─ interface : ${execi 30 bash /usr/share/berserkarch/conky/scripts/network.bash } - ${execi 30 bash /usr/share/berserkarch/conky/scripts/network.bash ip }
-${goto 81}│
-${goto 81}├─ dns      : ${execi 30 bash /usr/share/berserkarch/conky/scripts/network.bash dns }
-${goto 81}└─ gateway  : ${execi 30 bash /usr/share/berserkarch/conky/scripts/network.bash gtw }
+${lua_parse network_info}
 
-${voffset 700}
+${voffset 420}
 
 ${execp python3 /usr/share/berserkarch/conky/scripts/netmon.py}
 ]];

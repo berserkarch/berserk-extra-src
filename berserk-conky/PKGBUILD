@@ -2,7 +2,7 @@
 
 pkgname=berserk-conky
 pkgver=0.1.0
-pkgrel=2
+pkgrel=6
 pkgdesc="Conky config for Berserk Arch Specific"
 arch=('any')
 url="https://gitlab.com/berserkarch/berserk-packages/berserk-extra-src/-/tree/main/berserk-conky"
@@ -14,8 +14,8 @@ sha256sum=()
 berserkconfig="usr/share/berserkarch"
 
 package() {
-    install -dDm 755 "${pkgdir}/${berserkconfig}/"
-    cp -r "${startdir}/conky/" "${pkgdir}/${berserkconfig}/"
-    cp -r "${startdir}/conky/fonts/" "${pkgdir}/usr/share/"
-    install -Dm644 "${startdir}/conky/berserk-conky.desktop" "${pkgdir}/etc/xdg/autostart/berserk-conky.desktop"
+  install -dDm 755 "${pkgdir}/${berserkconfig}/"
+  cp -r "${startdir}/conky/" "${pkgdir}/${berserkconfig}/"
+  cp -r "${startdir}/conky/fonts/" "${pkgdir}/usr/share/"
+  install -Dm644 "${startdir}/conky/berserk-conky.desktop" "${pkgdir}/etc/xdg/autostart/berserk-conky.desktop"
 }
