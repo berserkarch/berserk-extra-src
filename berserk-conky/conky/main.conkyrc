@@ -1,0 +1,63 @@
+conky.config = {
+    background = false,
+    font = 'FuraCode Nerd Font:pixelsize=11',
+    use_xft = true,
+    xftalpha = 1.0,
+    update_interval = 1,
+    own_window = true,
+    own_window_transparent = true,
+    own_window_type = 'desktop',
+    own_window_class = 'Conky',
+    own_window_argb_visual = true,
+    own_window_argb_value = 255,
+    own_window_colour = '#000',
+    own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+    double_buffer = true,
+    draw_shades = false,
+    draw_outline = false,
+    draw_borders = false,
+    draw_graph_borders = true,
+    stippled_borders = 0,
+    border_width = 0,
+    default_color = '#BEC8CB',
+    default_shade_color = '#BEC8CB',
+    default_outline_color = '#BEC8CB',
+    alignment = 'top_left',
+    gap_x = 880,
+    gap_y = 5,
+    no_buffers = true,
+    cpu_avg_samples = 1,
+    net_avg_samples = 1,
+    use_spacer = 'none',
+    uppercase = true,
+    minimum_width = 1024,
+    minimum_height = 640,
+    default_bar_width=100,
+    default_bar_height=7,
+};
+
+conky.text = [[
+
+#leet chars: ┤┤└ └ ┴ ┴ ┐┐│ │┘ ┘┌ ┌ ├ ├ ┬ ┬ ┼ ┼ ┴ ┴ ── ││ ▽▼△▲▵▴▾▿
+# x5 ─────
+# Computer Info
+${alignr 5}${uid_name 1000}@${nodename} :   host ${offset 2}─┐
+${alignr 3}│
+${alignr 3}${kernel} : kernel ─┤
+${alignr 3}${execi 600 lsb_release -ds | sed 's/"//g'} : distro ─┤
+${alignr 3}${exec uptime | awk -F, '{print $1}' | awk '{gsub(/^ +| +$/,"")}1' } : uptime ─┘
+
+${voffset 735}
+${alignr 10}┌──────────────────────────────────────────┐
+${alignr 10}│  ${execi 3600 cat /proc/cpuinfo | grep 'model name'| sed -e 's/model name.*: //'| uniq | cut -c 1-42 | sed 's/(R)//g'|sed 's/(TM)//g' | sed 's/CPU     //g'}  │
+${alignr 10}├──────────────────────────────────────────┤
+${alignr 10}│ processes - ${exec printf "%-5s" $(ps -e --no-headers | wc -l)}             <${exec cat /proc/cpuinfo | grep MHz | grep -oE '[0-9]+' | awk '{ sum += $1 } END { avg = sum / NR / 1000; printf "%4.2f GHz\n", avg }'}> │
+${alignr 10}├- --  --  --  --  --  --  --  --  --  -- -┤
+${alignr 10}├─ p1 <${top name 1}            ${top cpu 1}> │
+${alignr 10}├─ p2 <${top name 2}            ${top cpu 2}> │
+${alignr 10}├─ p3 <${top name 3}            ${top cpu 3}> │
+${alignr 10}├─ p4 <${top name 4}            ${top cpu 4}> │
+${alignr 10}├─ p5 <${top name 5}            ${top cpu 5}> │
+${alignr 10}└──────────────────────────────────────────┘
+${alignr 20}└─────── cpu ${offset 3}
+]];
