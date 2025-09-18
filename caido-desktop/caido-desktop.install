@@ -1,0 +1,115 @@
+PKGNAME="caido-desktop"
+VERSION='0.51.1'
+APPIMAGE_URL="https://caido.download/releases/v${VERSION}/caido-desktop-v${VERSION}-linux-x86_64.AppImage"
+
+## helpers
+update_desktop_icons() {
+  if command -v update-desktop-database >/dev/null 2>&1; then
+    update-desktop-database -q /usr/share/applications
+  fi
+
+  if command -v gtk-update-icon-cache >/dev/null 2>&1; then
+    gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+  fi
+
+  if command -v update-mime-database >/dev/null 2>&1; then
+    update-mime-database /usr/share/mime >/dev/null 2>&1
+  fi
+}
+
+stop_if_running() {
+  if pgrep -f "caido" >/dev/null; then
+    echo "Stopping running Caido processes..."
+    pkill -f "caido" 2>/dev/null || true
+    sleep 2
+  fi
+}
+
+cleanup() {
+  if [[ -d "/opt/${PKGNAME}" ]]; then
+    rm -rf "/opt/${PKGNAME}"
+  fi
+
+  [[ -L "/usr/bin/caido" ]] && rm -f "/usr/bin/caido"
+}
+
+## install phases
+post_install() {
+  echo "Installing Caido Desktop v${VERSION}..."
+
+  TMPDIR=$(mktemp -d)
+  APPIMAGE_FILE="${TMPDIR}/caido-desktop.AppImage"
+
+  echo "Downloading AppImage..."
+  if ! curl -L -o "${APPIMAGE_FILE}" "${APPIMAGE_URL}"; then
+    echo "ERROR: Failed to download AppImage from ${APPIMAGE_URL}"
+    rm -rf "${TMPDIR}"
+    exit 1
+  fi
+
+  echo "Extracting AppImage..."
+  cd "${TMPDIR}"
+  chmod +x "${APPIMAGE_FILE}"
+  if ! "${APPIMAGE_FILE}" --appimage-extract >/dev/null 2>&1; then
+    echo "ERROR: Failed to extract AppImage"
+    rm -rf "${TMPDIR}"
+    exit 1
+  fi
+
+  install -dm 755 "/usr/bin"
+  install -dm 755 "/opt/${PKGNAME}"
+
+  echo "Installing files..."
+  cp -a "${TMPDIR}/squashfs-root/usr/share" "/" 2>/dev/null || true
+  cp -aR "${TMPDIR}/squashfs-root"/* "/opt/${PKGNAME}/"
+
+  ln -sf "/opt/${PKGNAME}/caido" "/usr/bin/caido"
+
+  find "/opt/${PKGNAME}" -type d -exec chmod 755 {} +
+
+  if [[ -f "/opt/${PKGNAME}/caido.desktop" ]]; then
+    sed -i 's|Exec=AppRun --no-sandbox %U|Exec=caido|' "/opt/${PKGNAME}/caido.desktop"
+    install -Dm 644 "/opt/${PKGNAME}/caido.desktop" -t "/usr/share/applications/"
+  fi
+
+  if [[ -f "/opt/${PKGNAME}/caido.png" ]]; then
+    install -Dm 644 "/opt/${PKGNAME}/caido.png" -t "/usr/share/icons/hicolor/256x256/apps/"
+  fi
+
+  update_desktop_icons
+
+  rm -rf "${TMPDIR}"
+
+  echo "Caido Desktop has been installed successfully."
+  echo "You can launch it from your application menu or run 'caido' from terminal."
+}
+
+post_upgrade() {
+  echo "Upgrading Caido Desktop..."
+
+  stop_if_running
+
+  cleanup
+
+  post_install
+  echo "Caido Desktop has been upgraded successfully."
+}
+
+pre_remove() {
+  stop_if_running
+}
+
+post_remove() {
+  echo "Removing Caido Desktop..."
+
+  cleanup
+
+  [[ -f "/usr/share/applications/caido.desktop" ]] && rm -f "/usr/share/applications/caido.desktop"
+
+  [[ -f "/usr/share/icons/hicolor/256x256/apps/caido.png" ]] && rm -f "/usr/share/icons/hicolor/256x256/apps/caido.png"
+
+  update_desktop_icons
+
+  echo "Caido Desktop has been removed."
+  echo "User configuration in ~/.config/caido (if any) has been preserved."
+}

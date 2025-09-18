@@ -1,0 +1,22 @@
+# Maintainer: Gaurav Raj (@thehackersbrain) <me@thehackersbrain.xyz>
+
+pkgname=caido-desktop
+pkgver=0.51.1
+pkgrel=2
+pkgdesc="A lightweight web security auditing toolkit."
+arch=('x86_64')
+url="https://caido.io/"
+license=('private')
+depends=(glibc gcc-libs curl)
+provides=(caido)
+source=()
+sha256sums=()
+install="$pkgname.install"
+
+prepare() {
+  sed -i "s/VERSION=.*/VERSION='${pkgver}'/" "$startdir/$pkgname.install"
+}
+
+package() {
+  :
+}
