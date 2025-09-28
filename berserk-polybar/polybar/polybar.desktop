@@ -3,4 +3,4 @@ Name=Polybar
 Exec=/usr/local/bin/polybar-launch
 Type=Application
 X-GNOME-Autostart-enabled=true
-OnlyShowIn=XFCE;
+OnlyShowIn=XFCE;OPENBOX;
