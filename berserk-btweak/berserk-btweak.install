@@ -1,0 +1,7 @@
+post_install() {
+  pipx install btweak --global
+}
+
+post_upgrade() {
+  pipx upgrade btweak --global
+}

@@ -1,0 +1,16 @@
+# Maintainer: Gaurav Raj (@thehackersbrain) <me@thehackersbrain.xyz>
+
+pkgname=berserk-btweak
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="Berserk Arch Tweak Tool"
+arch=('any')
+url="https://github.com/berserkarch/btweak"
+license=('GPL3')
+depends=('python-pipx')
+
+install="$pkgname.install"
+
+package() {
+  :
+}
