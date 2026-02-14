@@ -2,15 +2,22 @@
 
 pkgname=berserk-btweak
 pkgver=0.1.0
-pkgrel=1
-pkgdesc="Berserk Arch Tweak Tool"
-arch=('any')
-url="https://github.com/berserkarch/btweak"
-license=('GPL3')
-depends=('python-pipx')
+pkgrel=2
+pkgdesc='Berserk Arch Tweak Tool'
+arch=(any)
+url='https://github.com/berserkarch/btweak'
+license=(MIT)
+depends=(python python-rich)
+makedepends=(git python-{build,installer,poetry-core,wheel})
+source=("$pkgname::git+https://github.com/berserkarch/btweak")
+sha512sums=('SKIP')
 
-install="$pkgname.install"
+build() {
+  cd "$pkgname"
+  python -m build --wheel --no-isolation
+}
 
 package() {
-  :
+  cd "$pkgname"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }

@@ -1,0 +1,9 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = true
+[remote "origin"]
+	url = https://github.com/berserkarch/btweak
+	tagOpt = --no-tags
+	fetch = +refs/*:refs/*
+	mirror = true
