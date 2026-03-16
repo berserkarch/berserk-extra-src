@@ -2,7 +2,7 @@
 
 pkgname=berserk-wallpapers
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Default wallpapers for Berserk Arch"
 arch=('any')
 url="https://gitlab.com/berserkarch/berserk-packages/berserk-core-src/berserk-wallpapers"
@@ -13,4 +13,6 @@ package() {
   install -dm755 "$pkgdir/usr/share/backgrounds/"
   cp -r "${startdir}/berserkarch/" "$pkgdir/usr/share/backgrounds/"
   install -Dm644 "$startdir/berserkarch/logo.svg" "$pkgdir/usr/share/berserkarch/logo.svg"
+  install -Dm644 "$startdir/berserkarch/logo.svg" "$pkgdir/usr/share/pixmaps/berserkarch-logo.svg"
+  install -Dm644 "$startdir/berserkarch/logo.svg" "$pkgdir/usr/share/icons/hicolor/scalable/apps/berserkarch-logo.svg"
 }
