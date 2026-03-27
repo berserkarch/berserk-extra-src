@@ -1,0 +1,19 @@
+# Maintainer: Gaurav Raj (@thehackersbrain) <gaurav@thehackersbrain.dev>
+
+pkgname=berserk-llm
+pkgver=0.1.0
+pkgrel=2
+pkgdesc="Gemma 3 4b Q4 Local LLM"
+arch=('any')
+url='https://github.com/berserkarch/berserk-core-repo/tree/main/berserk-llm'
+license=('GPL')
+depends=('cuda' 'llama-cpp-git')
+source=('llm')
+sha256sums=('0e2b4352b6ac015dd6d03bd63986c154277ae07e304ca881b316aa8a66736abb')
+install=$pkgname.install
+
+package() {
+  install -Dm755 "${srcdir}/llm" "${pkgdir}/usr/local/bin/llm"
+}
+
+# vim:set ts=2 sw=2 et:

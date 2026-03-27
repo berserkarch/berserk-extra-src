@@ -1,0 +1,6 @@
+#!/bin/bash
+
+llama-cli -m "/usr/share/berserk-llm/main.gguf" \
+  -t 4 \
+  -c 4096 \
+  -cnv

@@ -1,0 +1,8 @@
+post_install() {
+  mkdir -p /usr/share/berserk-llm/
+  wget https://huggingface.co/thehackersbrain/berserkllm/resolve/main/main.gguf -O /usr/share/berserk-llm/main.gguf
+}
+
+post_remove() {
+  rm -rf /usr/share/berserk-llm/
+}
